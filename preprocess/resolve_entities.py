@@ -68,6 +68,8 @@ while all_entities:
         decompound_entities(entity.split(","), eid)
     elif "/" in entity:
         decompound_entities(entity.split("/"), eid)
+    elif "\n" in entity:
+        decompound_entities(entity.split("\n"), eid)
     else:
         decompound_entities([entity], eid)
 

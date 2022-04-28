@@ -264,7 +264,7 @@ def fetch_conceptnet(word):
 def clean_text(text):
     text = re.sub(r"[^a-z ]", " ", text.lower())
     word_tokens = word_tokenize(text)
-    filtered_sentence = [w for w in word_tokens if not w in stop_words]
+    filtered_sentence = [w for w in word_tokens if w not in stop_words]
     i = 0
     while i < len(filtered_sentence):
         word = filtered_sentence[i]
@@ -298,23 +298,23 @@ def get_entities(messages):
 
 for json_str in json_list:
     result = json.loads(json_str)
-    if result['conversationId'] in result_list:
-        continue
+    # if result['conversationId'] in result_list:
+    #     continue
     result["conversation"] = preprocess(result['messages'])
     pprint(result)
     result_list[result['conversationId']] = result
-    with open(r"train_data.pickle", "wb") as train_file:
-        pickle.dump(result_list, train_file)
-        train_file.close()
-
-    with open(r"words.pickle", "wb") as vocab_file:
-        pickle.dump(words, vocab_file)
-        vocab_file.close()
-
-    with open(r"word_to_root.pickle", "wb") as vocab_file:
-        pickle.dump(word_to_root, vocab_file)
-        vocab_file.close()
-
-    with open(r"word_kg.pickle", "wb") as kg_file:
-        pickle.dump(word_kg, kg_file)
-        kg_file.close()
+    # with open(r"train_data.pickle", "wb") as train_file:
+    #     pickle.dump(result_list, train_file)
+    #     train_file.close()
+    #
+    # with open(r"words.pickle", "wb") as vocab_file:
+    #     pickle.dump(words, vocab_file)
+    #     vocab_file.close()
+    #
+    # with open(r"word_to_root.pickle", "wb") as vocab_file:
+    #     pickle.dump(word_to_root, vocab_file)
+    #     vocab_file.close()
+    #
+    # with open(r"word_kg.pickle", "wb") as kg_file:
+    #     pickle.dump(word_kg, kg_file)
+    #     kg_file.close()
